@@ -298,18 +298,30 @@
                         echo pg_last_error($connect);
                           exit;
                         }
+                        
+                        $contacts = pg_query($connect,"SELECT * FROM media ORDER BY media_id ASC");
+                        if (!$contacts)
+                        {
+                        echo pg_last_error($connect);
+                          exit;
+                        }
 
                         echo '
                         <div class="col-sm-4">
                             <div class="team-member">
                                 <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
                                 <h4>'. $person['name'] .'</h4>
-                                <p class="text-muted">'. $person['description'] .'</p>
+                                
+                                while($row = pg_fetch_array($contacts))
+                                {
+                                    echo '<p class="text-muted">'. $row['contact'] .'</p>';
+                                    echo '<p class="text-muted">'. $row['description'] .'</p>';
+                                }
                                 <ul class="list-inline social-buttons">
                                 ';
                                 while($row = pg_fetch_array($media))
                                 {
-                                    echo '<li><a href="#"><i class="fa fa-twitter"></i></a>
+                                    echo '<li><a href="'. $row['url'] .'"><i class="fa fa-twitter"></i></a>
                                     </li>';
                                 }
                                 echo '
