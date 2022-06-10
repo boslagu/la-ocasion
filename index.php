@@ -299,7 +299,7 @@
                           exit;
                         }
                         
-                        $contacts = pg_query($connect,"SELECT * FROM media ORDER BY media_id ASC");
+                        $contacts = pg_query($connect,"SELECT * FROM contact ORDER BY contact_id ASC");
                         if (!$contacts)
                         {
                         echo pg_last_error($connect);
