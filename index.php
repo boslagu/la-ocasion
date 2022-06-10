@@ -48,8 +48,7 @@
     while($row = pg_fetch_array($result))
     {
 
-    $coor = $row[0];
-    echo $coor;
+        echo print_r($row);
 
     }
 ?>
