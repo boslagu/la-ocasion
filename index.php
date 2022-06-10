@@ -293,7 +293,7 @@
                     {
                         
                         $media = pg_query($connect,"SELECT * FROM media ORDER BY media_id ASC");
-                        if (!$contacts)
+                        if (!$media)
                         {
                         echo pg_last_error($connect);
                           exit;
