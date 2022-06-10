@@ -167,14 +167,14 @@
             <div class="row">
                 
                 <?php
-                    $services = pg_query($connect,"SELECT * FROM p_gallery ORDER BY position_id ASC");
-                    if (!$services)
+                    $gallery = pg_query($connect,"SELECT * FROM p_gallery ORDER BY position_id ASC");
+                    if (!$gallery)
                     {
                     echo pg_last_error($connect);
                       exit;
                     }
 
-                    while($row = pg_fetch_array($services))
+                    while($row = pg_fetch_array($gallery))
                     {
                         echo '
                         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -211,15 +211,15 @@
                     <ul class="timeline">
                         
                         <?php
-                            $services = pg_query($connect,"SELECT * FROM about_timeline ORDER BY position_id ASC");
-                            if (!$services)
+                            $about = pg_query($connect,"SELECT * FROM about_timeline ORDER BY position_id ASC");
+                            if (!$about)
                             {
                             echo pg_last_error($connect);
                               exit;
                             }
 
                             $cnt = 0;
-                            while($row = pg_fetch_array($services))
+                            while($row = pg_fetch_array($about))
                             {
                                 $cnt++;
                                 if ($cnt % 2 == 0){
@@ -276,25 +276,49 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">La Ocasion oweners and partners.</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Person 1</h4>
-                        <p class="text-muted">Lead Designer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                
+                <?php
+                    $team = pg_query($connect,"SELECT * FROM team ORDER BY position_id ASC");
+                    if (!$team)
+                    {
+                    echo pg_last_error($connect);
+                      exit;
+                    }
+
+                    while($row = pg_fetch_array($team))
+                    {
+                        
+                        $media = pg_query($connect,"SELECT * FROM media ORDER BY position_id ASC");
+                        if (!$contacts)
+                        {
+                        echo pg_last_error($connect);
+                          exit;
+                        }
+
+                        $
+                        echo '
+                        <div class="col-sm-4">
+                            <div class="team-member">
+                                <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
+                                <h4>Person 1</h4>
+                                <p class="text-muted">Lead Designer</p>
+                                <ul class="list-inline social-buttons">
+                                ';
+                                while($row = pg_fetch_array($media))
+                                {
+                                    echo '<li><a href="#"><i class="fa fa-twitter"></i></a>
+                                    </li>';
+                                }
+                                echo '
+                                </ul>
+                            </div>
+                        </div>';
+                    }
+                ?>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
