@@ -37,6 +37,21 @@
     if(!$connect){
       echo "Error : Unable to open database\n";
     }
+
+ $result = pg_query($connect,"SELECT * FROM users");
+    if (!$result)
+    {
+    echo pg_last_error($connect);
+      exit;
+    }
+
+    while($row = pg_fetch_array($result))
+    {
+
+    $coor = $row[0];
+    echo $coor;
+
+    }
 ?>
 
 
