@@ -292,7 +292,7 @@
                     while($row = pg_fetch_array($team))
                     {
                         
-                        $media = pg_query($connect,"SELECT * FROM media ORDER BY position_id ASC");
+                        $media = pg_query($connect,"SELECT * FROM media ORDER BY media_id ASC");
                         if (!$contacts)
                         {
                         echo pg_last_error($connect);
