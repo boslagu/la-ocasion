@@ -289,7 +289,7 @@
                       exit;
                     }
 
-                    while($row = pg_fetch_array($team))
+                    while($person = pg_fetch_array($team))
                     {
                         
                         $media = pg_query($connect,"SELECT * FROM media ORDER BY media_id ASC");
@@ -303,8 +303,8 @@
                         <div class="col-sm-4">
                             <div class="team-member">
                                 <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
-                                <h4>Person 1</h4>
-                                <p class="text-muted">Lead Designer</p>
+                                <h4>'. $person['name'] .'</h4>
+                                <p class="text-muted">'. $person['description'] .'</p>
                                 <ul class="list-inline social-buttons">
                                 ';
                                 while($row = pg_fetch_array($media))
@@ -318,37 +318,7 @@
                         </div>';
                     }
                 ?>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Person 2</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Person 3</h4>
-                        <p class="text-muted">Lead Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
