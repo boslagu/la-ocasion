@@ -310,14 +310,14 @@
                         <div class="col-sm-4">
                             <div class="team-member">
                                 <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
-                                <h4>'. $person['name'] .'</h4>
+                                <h4>'. $person['name'] .'</h4>';
                                 
                                 while($row = pg_fetch_array($contacts))
                                 {
                                     echo '<p class="text-muted">'. $row['contact'] .'</p>';
                                     echo '<p class="text-muted">'. $row['description'] .'</p>';
                                 }
-                                <ul class="list-inline social-buttons">
+                                echo '<ul class="list-inline social-buttons">
                                 ';
                                 while($row = pg_fetch_array($media))
                                 {
