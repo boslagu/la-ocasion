@@ -299,7 +299,6 @@
                           exit;
                         }
 
-                        $
                         echo '
                         <div class="col-sm-4">
                             <div class="team-member">
