@@ -1,11 +1,13 @@
 <?php
 
-  $host = "ec2-54-147-33-38.compute-1.amazonaws.com";
+    $host = "ec2-54-147-33-38.compute-1.amazonaws.com";
     $user = "rhkeojjsqvafai";
     $password = "9a47afa990330d719c42f76180006c71252e34bb02c1804e6b4b820459e0439b";
     $dbname = "derc23d3bc11l0";
     $port = "5432";
     
+    $db_handle = pg_connect("host=".$host." port=".$port." dbname=".$dbname." user=".$user." password=".$password);
+echo $db_handle
     try{
       //Set DSN data source name
         $dsn = "pgsql:host=" . $host . ";port=" . $port .";dbname=" . $dbname . ";user=" . $user . ";password=" . $password . ";";
