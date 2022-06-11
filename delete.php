@@ -25,7 +25,12 @@
       echo print_r($row);
 
   }
-  $sql = "UPDATE o_services SET deleted = 1 WHERE service_id = ". $_GET['id'] ."";
+  $sql = "";
+  if ($_GET['met'] == 'del'){
+    $sql = "UPDATE o_services SET deleted = 1 WHERE service_id = ". $_GET['id'] ."";
+  }else{
+    $sql = "UPDATE o_services SET deleted = 0 WHERE service_id = ". $_GET['id'] ."";
+  }
   $result = pg_query($connect, $sql);
   if (!$result)
   {
