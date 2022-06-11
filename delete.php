@@ -5,7 +5,6 @@
   if (!$result)
   {
     echo pg_last_error($connect);
-    exit;
   }else{
     echo "<script>alert(Record deleted!)</script>";
     header("Location: https://la-ocasion.herokuapp.com/config.php"); 
