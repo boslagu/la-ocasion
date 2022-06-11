@@ -321,7 +321,7 @@
                                 ';
                                 while($row = pg_fetch_array($media))
                                 {
-                                    echo '<li><a href="'. $row['url'] .'"><i class="fa fa-twitter"></i></a>
+                                    echo '<li><a href="'. $row['url'] .'"><i class="fa '. $row['platform'] .'"></i></a>
                                     </li>';
                                 }
                                 echo '
