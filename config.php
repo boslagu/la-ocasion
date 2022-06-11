@@ -165,7 +165,7 @@
             }
             if(@isset($_POST['btnSave'])){
               $field = explode(";",$_COOKIE["main_bg"]);
-              $sql = "UPDATE design_config_param SET param_value = '". $field[0] ."' WHERE ". $field[1] ." = '" . $field[2] . "'";
+              $sql = "UPDATE design_config_param SET param_value = '". $field[0] ."' WHERE param_name = '" . $field[2] . "'";
               $result = pg_query($connect, $sql);
               if (!$result)
               {
