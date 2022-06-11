@@ -77,14 +77,15 @@
     if(@isset($_POST['btnDeleteService'])){
       $sql = "DELETE FROM o_services WHERE service_id = ". $_POST['txtServiceIDDel'] ."";
 
-      $result = pg_query($connect, $sql);
-      if (!$result)
-      {
-          echo pg_last_error($connect);
-          exit;
-      }else{
-        echo "Record inserted!";
-      }
+      echo "<script>alert(". $_POST['txtServiceIDDel'] .")</script>";
+      // $result = pg_query($connect, $sql);
+      // if (!$result)
+      // {
+      //     echo pg_last_error($connect);
+      //     exit;
+      // }else{
+      //   echo "Record inserted!";
+      // }
     }
   }catch (Exception $e){
     echo $e->getMessage();
