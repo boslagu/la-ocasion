@@ -82,9 +82,9 @@
             {
                 $lastID = $row['service_id'] + 1;
                 if ($row['deleted'] == 1){
-                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."&met=del'>Undo Delete</a></td></tr>";
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."&met=undo'>Undo Delete</a></td></tr>";
                 }else{
-                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."&met=undo'>Delete</a></td></tr>";
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."&met=del'>Delete</a></td></tr>";
                 }
             }
             echo "</table>";
@@ -115,9 +115,9 @@
             {
               $lastID = $row['photo_id'] + 1;
               if($row['deleted'] == 1){
-                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."&met=del'>Undo Delete</a></td></tr>";
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."&met=undo'>Undo Delete</a></td></tr>";
               }else{
-                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."&met=undo'>Delete</a></td></tr>";
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."&met=del'>Delete</a></td></tr>";
               }
             }
             echo "</table>";
