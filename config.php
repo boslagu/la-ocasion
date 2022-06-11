@@ -139,9 +139,6 @@
         
     <?php
   
-          if(@isset($_POST['main_bg'])){
-            echo 'alert("cookie: " + '. $_COOKIE["main_bg"] .');';
-          }
           echo '<br>
           <form action="#" method="POST" name="param">';
               $result = pg_query($connect, "SELECT * FROM design_config_param");
@@ -166,6 +163,9 @@
             {
               echo pg_last_error($connect);
               exit;
+            }
+            if(@isset($_POST['btnSave'])){
+              echo 'alert("cookie: " + '. $_COOKIE["main_bg"] .');';
             }
             echo "<table>";
             while ($row = pg_fetch_array($result))
