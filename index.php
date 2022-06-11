@@ -106,7 +106,7 @@
             </div>
             <div class="row">
                 <?php
-                    $services = pg_query($connect,"SELECT * FROM o_services ORDER BY position_id ASC");
+                    $services = pg_query($connect,"SELECT * FROM o_services WHERE deleted != 1 ORDER BY position_id ASC");
                     if (!$services)
                     {
                     echo pg_last_error($connect);
@@ -148,7 +148,7 @@
             <div class="row">
                 
                 <?php
-$gallery = pg_query($connect, "SELECT * FROM p_gallery ORDER BY position_id ASC");
+$gallery = pg_query($connect, "SELECT * FROM p_gallery WHERE deleted != 1 ORDER BY position_id ASC");
 if (!$gallery)
 {
     echo pg_last_error($connect);
