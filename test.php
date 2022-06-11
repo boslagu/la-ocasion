@@ -116,6 +116,7 @@
                     while($row = pg_fetch_array($services))
                     {
                         echo '<div class="col-md-4">
+                            <img src="' . $row['photo_url'] . '" class="img-responsive" alt="">
                             <h4 class="service-heading">'. $row['title'] .'</h4>
                             <p class="text-muted">'. $row['description'] .'</p>
                         </div>';
