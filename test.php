@@ -24,7 +24,7 @@
         $bg = "";
         while ($row = pg_fetch_array($result))
         {
-            if($row['param_name'] == "main bg"){
+            if($row['param_name'] == "main_bg"){
                 $bg = $row['param_value'];
             }
         }
