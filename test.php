@@ -167,6 +167,86 @@ while ($row = pg_fetch_array($gallery))
             </div>
         </div>
     </section>
+    
+    
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">About</h2>
+                    <h3 class="section-subheading text-muted">This is just a sample about. Please insert an information to change this phrase.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        
+                        <?php
+$about = pg_query($connect, "SELECT * FROM about_timeline ORDER BY position_id ASC");
+if (!$about)
+{
+    echo pg_last_error($connect);
+    exit;
+}
+
+$cnt = 0;
+while ($row = pg_fetch_array($about))
+{
+    $cnt++;
+    if ($cnt % 2 == 0)
+    {
+        echo '
+                                    <li>
+                                        <div class="timeline-image">
+                                            <!-- <img class="img-circle img-responsive" src="img/about/1.jpg" alt=""> -->
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4>' . $row['date'] . '</h4>
+                                                <h4 class="subheading">' . $row['title'] . '</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p class="text-muted">' . $row['description'] . '</p>
+                                            </div>
+                                        </div>
+                                    </li>';
+    }
+    else
+    {
+        echo '
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-image">
+                                            <!-- <img class="img-circle img-responsive" src="img/about/1.jpg" alt=""> -->
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4>2009-2011</h4>
+                                                <h4 class="subheading">' . $row['title'] . '</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p class="text-muted">' . $row['description'] . '</p>
+                                            </div>
+                                        </div>
+                                    </li>';
+    }
+}
+?>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
 
     <!-- Team Section -->
 <section id="team" class="bg-light-gray">
