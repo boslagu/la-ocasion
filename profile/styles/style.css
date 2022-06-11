@@ -353,6 +353,8 @@ section h3.section-subheading {
 #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
+    width: 450px;
+    height: 320px;
 }
 
 #portfolio .portfolio-item .portfolio-link {
@@ -859,4 +861,10 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #1ee2e7;
+}
+
+.img-size{
+    object-fit: cover;
+    width: 400px;
+    height: 220px;
 }
