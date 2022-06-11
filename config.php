@@ -109,7 +109,7 @@
             echo "<table>";
             while ($row = pg_fetch_array($result))
             {
-              echo "<tr><td><input type='text' name='txtServiceIDDel' value='". $row['service_id'] ."'></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><input type='submit' name='btnDeleteService' value='Delete'></td></tr>"
+              echo "<tr><td><input type='text' name='txtServiceIDDel' value='". $row['service_id'] ."'></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><input type='submit' name='btnDeleteService' value='Delete'></td></tr>";
             }
             echo "</table>";
         ?>
