@@ -164,7 +164,7 @@
               exit;
             }
             if(@isset($_POST['btnSave'])){
-              $field = preg_split(":",$_COOKIE["main_bg"]);
+              $field = explode(":",$_COOKIE["main_bg"]);
               $sql = "UPDATE design_config_param SET param_value = '". $field[1] ."' WHERE ";
               echo $sql;
             }
