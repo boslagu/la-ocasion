@@ -18,25 +18,6 @@
       echo pg_last_error($connect);
       exit;
   }
+  echo $_GET['met'];
 
-  while ($row = pg_fetch_array($result))
-  {
-
-      echo print_r($row);
-
-  }
-  $sql = "";
-  if ($_GET['met'] == 'del'){
-    $sql = "UPDATE p_gallery SET delete = 1 WHERE photo_id = ". $_GET['id'] ."";
-  }else{
-    $sql = "UPDATE p_gallery SET delete = 0 WHERE photo_id = ". $_GET['id'] ."";
-  }
-  $result = pg_query($connect, $sql);
-  if (!$result)
-  {
-    echo pg_last_error($connect);
-  }else{
-    echo "<script>alert(Record deleted!)</script>";
-    header("Location: https://la-ocasion.herokuapp.com/config.php"); 
-  }
 ?>
