@@ -155,7 +155,7 @@
                   expires = "";
                 }
                 var value = document.getElementById(name).value;
-                value = value + ":" + name + ":" + from;
+                value = value + ";" + name + ";" + from;
                 document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
               }</script>';
             if (!$result)
@@ -164,7 +164,7 @@
               exit;
             }
             if(@isset($_POST['btnSave'])){
-              $field = explode(":",$_COOKIE["main_bg"]);
+              $field = explode(";",$_COOKIE["main_bg"]);
               $sql = "UPDATE design_config_param SET param_value = '". $field[0] ."' WHERE ". $field[1] ." = '" . $field[2] . "'";
               echo $sql;
             }
