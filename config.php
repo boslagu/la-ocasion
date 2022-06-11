@@ -155,6 +155,7 @@
                   else {
                     expires = "";
                   }
+                  console.log("name: " + name);
                   var value = document.getElementById(name).value;
                   document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
                 }</script>';
