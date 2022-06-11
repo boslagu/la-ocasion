@@ -14,19 +14,33 @@
             echo "Error : Unable to open database\n";
         }
 
-        $result = pg_query($connect, "SELECT * FROM users");
+        $result = pg_query($connect, "SELECT * FROM design_config_param");
         if (!$result)
         {
             echo pg_last_error($connect);
             exit;
         }
 
+        $bg = "";
         while ($row = pg_fetch_array($result))
         {
-
-            echo print_r($row);
-
+            if($row['param_name'] == "main bg"){
+                $bg = $row['param_value'];
+            }
         }
+    
+        echo '<style>header {
+            text-align: center;
+            color: #fff;
+            background-attachment: scroll;
+            background-image: url($bg);
+            background-position: center center;
+            background-repeat: none;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+        }</style>';
     ?>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -35,7 +49,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="profile/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="profile/styles/testStyle.css">
     <title></title>
 </head>
 <body id="page-top" class="index" data-pinterest-extension-installed="cr1.3.4">
