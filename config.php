@@ -76,13 +76,14 @@
               echo pg_last_error($connect);
               exit;
             }
+            $lastID = 0;
             echo "<table>";
             while ($row = pg_fetch_array($result))
             {
+              $lastID = $row['service_id'] + 1;
               echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Delete</a></td></tr>";
             }
             echo "</table>";
-        $lastID = $row['service_id'] + 1;
         echo '<br>
         </form>
         <form action="#" method="POST" name="insertService">
@@ -104,13 +105,14 @@
               echo pg_last_error($connect);
               exit;
             }
+            $lastID = 0;
             echo "<table>";
             while ($row = pg_fetch_array($result))
             {
+              $lastID = $row['photo_id'] + 1;
               echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."'>Delete</a></td></tr>";
             }
             echo "</table>";
-        $lastID = $row['photo_id'] + 1;
         echo '<br>
         <form action="#" method="POST" name="insertPhoto">
             <input type="text" name="txtPhotoID" value="'. $lastID .'" disabled>
