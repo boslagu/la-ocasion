@@ -58,6 +58,52 @@
     </nav>
     
     
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">La Ocasion</div>
+                <div class="intro-heading">You Imagine We Create</div>
+                <a href="#services" class="page-scroll btn btn-xl">Start</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Services</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <?php
+                    $services = pg_query($connect,"SELECT * FROM o_services ORDER BY position_id ASC");
+                    if (!$services)
+                    {
+                    echo pg_last_error($connect);
+                      exit;
+                    }
+
+                    while($row = pg_fetch_array($services))
+                    {
+                        echo '<div class="col-md-4">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="glyphicon glyphicon-tree-conifer"></i>
+                            </span>
+                            <h4 class="service-heading">'. $row['title'] .'</h4>
+                            <p class="text-muted">'. $row['description'] .'</p>
+                        </div>';
+                    }
+                ?>
+            </div>
+        </div>
+    </section>
+    
 
     <!-- Team Section -->
 <section id="team" class="bg-light-gray">
