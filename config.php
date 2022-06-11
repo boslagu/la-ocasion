@@ -72,25 +72,6 @@
     echo $e->getMessage();
   }
 
-
-  try{
-    // if(@isset($_POST['btnDeleteService'])){
-      $sql = "DELETE FROM o_services WHERE service_id = ". @$_GET['id'] ."";
-
-      echo "<script>alert(". @$_GET['id'] .")</script>";
-      // $result = pg_query($connect, $sql);
-      // if (!$result)
-      // {
-      //     echo pg_last_error($connect);
-      //     exit;
-      // }else{
-      //   echo "Record inserted!";
-      // }
-    // }
-  }catch (Exception $e){
-    echo $e->getMessage();
-  }
-
 ?>
 
 <!DOCTYPE html>
@@ -99,20 +80,22 @@
     <title></title>
 </head>
 <body>
-    <?php
-        $result = pg_query($connect, "SELECT * FROM o_services ORDER BY position_id ASC");
-        if (!$result)
-        {
-          echo pg_last_error($connect);
-          exit;
-        }
-        echo "<table>";
-        while ($row = pg_fetch_array($result))
-        {
-          echo "<tr><td><input type='text' name='txtServiceIDDel' value='". $row['service_id'] ."'></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='#?id=". $row['service_id'] .">Delete</a></td></tr>";
-        }
-        echo "</table>";
-    ?>
+    <form action="#" method="POST" name="displayServices">
+        <?php
+            $result = pg_query($connect, "SELECT * FROM o_services ORDER BY position_id ASC");
+            if (!$result)
+            {
+              echo pg_last_error($connect);
+              exit;
+            }
+            echo "<table>";
+            while ($row = pg_fetch_array($result))
+            {
+              echo "<tr><td><input type='text' name='txtServiceIDDel' value='". $row['service_id'] ."'></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='#?id=". $row['service_id'] ."'></a></td></tr>";
+            }
+            echo "</table>";
+        ?>
+    </form>
     <form action="#" method="POST" name="insertService">
         <input type="text" name="txtServiceID" placeholder="Service ID">
         <input type="text" name="txtPositionID" placeholder="Service Position ID">
