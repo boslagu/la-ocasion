@@ -1,34 +1,33 @@
-<?php
-$host = "host=ec2-54-147-33-38.compute-1.amazonaws.com";
-$user = "user=rhkeojjsqvafai";
-$password = "password=9a47afa990330d719c42f76180006c71252e34bb02c1804e6b4b820459e0439b";
-$dbname = "dbname=derc23d3bc11l0";
-$port = "port=5432";
-
-$connect = pg_connect("$host $port $dbname $user $password");
-if (!$connect)
-{
-    echo "Error : Unable to open database\n";
-}
-
-$result = pg_query($connect, "SELECT * FROM users");
-if (!$result)
-{
-    echo pg_last_error($connect);
-    exit;
-}
-
-while ($row = pg_fetch_array($result))
-{
-
-    echo print_r($row);
-
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
+    <?php
+        $host = "host=ec2-54-147-33-38.compute-1.amazonaws.com";
+        $user = "user=rhkeojjsqvafai";
+        $password = "password=9a47afa990330d719c42f76180006c71252e34bb02c1804e6b4b820459e0439b";
+        $dbname = "dbname=derc23d3bc11l0";
+        $port = "port=5432";
+
+        $connect = pg_connect("$host $port $dbname $user $password");
+        if (!$connect)
+        {
+            echo "Error : Unable to open database\n";
+        }
+
+        $result = pg_query($connect, "SELECT * FROM users");
+        if (!$result)
+        {
+            echo pg_last_error($connect);
+            exit;
+        }
+
+        while ($row = pg_fetch_array($result))
+        {
+
+            echo print_r($row);
+
+        }
+    ?>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
