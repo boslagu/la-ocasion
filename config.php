@@ -132,5 +132,46 @@
         </form>';
       
     ?>
+  
+        
+    <?php
+        echo '<br>
+        <form action="#" method="POST" name="param">';
+            $result = pg_query($connect, "SELECT * FROM design_config_param");
+            echo '<script>$(document).ready(function () {
+                  createCookie("height", $(window).height(), "10");
+                });
+
+                function createCookie(name, days) {
+                  var expires;
+                  if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toGMTString();
+                  }
+                  else {
+                    expires = "";
+                  }
+                  var value = document.getElementById(name).value;
+                  document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+                }</script>';
+            if (!$result)
+            {
+              echo pg_last_error($connect);
+              exit;
+            }
+            echo "<table>";
+            while ($row = pg_fetch_array($result))
+            {
+              echo "<tr>
+                <td>". $row['param_name'] ."</td>
+                <td><input type='text' id='". $row['param_name'] ."' value='". $row['value'] ."'></td>
+                <td><input type='submit' name='btnSave' value='Save' onclick='createCookie('". $row['param_name'] ."', 1)'></td>
+              </tr>";
+            }
+            //$_COOKIE["height"];
+            echo "</table>";
+      
+    ?>
 </body>
 </html> 
