@@ -122,7 +122,7 @@
                                         <i class="fa fa-plus fa-3x"></i>
                                     </div>
                                 </div>
-                                <img src="'. $row['photo_url'] .'" class="img-responsive" alt="">
+                                <img src="'. $row['photo_url'] .'" class="img-size" alt="">
                             </a>
                             <div class="portfolio-caption">
                                 <h4>'. $row['title'] .'</h4>
@@ -165,7 +165,7 @@ while ($row = pg_fetch_array($gallery))
                                         <i class="fa fa-plus fa-3x"></i>
                                     </div>
                                 </div>
-                                <img src="' . $row['photo_url'] . '" class="img-responsive" alt="">
+                                <img src="' . $row['photo_url'] . '" class="img-size" alt="">
                             </a>
                             <div class="portfolio-caption">
                                 <h4>' . $row['title'] . '</h4>
