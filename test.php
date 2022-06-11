@@ -28,14 +28,14 @@
 
         }
     ?>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="profile/js/frame.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/frame.js"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="profile/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
     <title></title>
 </head>
 <body id="page-top" class="index" data-pinterest-extension-installed="cr1.3.4">
@@ -94,9 +94,51 @@
             </div>
         </div>
     </header>
+    
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Services</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <?php
+                    $services = pg_query($connect,"SELECT * FROM o_services ORDER BY position_id ASC");
+                    if (!$services)
+                    {
+                    echo pg_last_error($connect);
+                      exit;
+                    }
 
+                    while($row = pg_fetch_array($services))
+                    {
+                        echo '<div class="col-md-4">
+                            <h4 class="service-heading">'. $row['title'] .'</h4>
+                            <p class="text-muted">'. $row['description'] .'</p>
+                        </div>';
+                    }
+                ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+<section id="team" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
 </body>
 </html>
-
