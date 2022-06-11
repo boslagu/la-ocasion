@@ -155,6 +155,7 @@
                 }
                 alert("name: " + name);
                 var value = document.getElementById(name).value;
+                alert("value: " + value);
                 document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
               }</script>';
             if (!$result)
