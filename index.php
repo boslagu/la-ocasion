@@ -1,35 +1,33 @@
-
-<?php
-$host = "host=ec2-54-147-33-38.compute-1.amazonaws.com";
-$user = "user=rhkeojjsqvafai";
-$password = "password=9a47afa990330d719c42f76180006c71252e34bb02c1804e6b4b820459e0439b";
-$dbname = "dbname=derc23d3bc11l0";
-$port = "port=5432";
-
-$connect = pg_connect("$host $port $dbname $user $password");
-if (!$connect)
-{
-    echo "Error : Unable to open database\n";
-}
-
-$result = pg_query($connect, "SELECT * FROM users");
-if (!$result)
-{
-    echo pg_last_error($connect);
-    exit;
-}
-
-while ($row = pg_fetch_array($result))
-{
-
-    echo print_r($row);
-
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
+    <?php
+        $host = "host=ec2-54-147-33-38.compute-1.amazonaws.com";
+        $user = "user=rhkeojjsqvafai";
+        $password = "password=9a47afa990330d719c42f76180006c71252e34bb02c1804e6b4b820459e0439b";
+        $dbname = "dbname=derc23d3bc11l0";
+        $port = "port=5432";
+
+        $connect = pg_connect("$host $port $dbname $user $password");
+        if (!$connect)
+        {
+            echo "Error : Unable to open database\n";
+        }
+
+        $result = pg_query($connect, "SELECT * FROM users");
+        if (!$result)
+        {
+            echo pg_last_error($connect);
+            exit;
+        }
+
+        while ($row = pg_fetch_array($result))
+        {
+
+            echo print_r($row);
+
+        }
+    ?>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -83,7 +81,9 @@ while ($row = pg_fetch_array($result))
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+    
+    
+    
     <!-- Header -->
     <header>
         <div class="container">
@@ -94,9 +94,9 @@ while ($row = pg_fetch_array($result))
             </div>
         </div>
     </header>
-
+    
     <!-- Services Section -->
-    <section id="services">
+    <section id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -104,31 +104,38 @@ while ($row = pg_fetch_array($result))
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
-            <div class="row text-center">
+            <div class="row">
                 <?php
-$services = pg_query($connect, "SELECT * FROM o_services ORDER BY position_id ASC");
-if (!$services)
-{
-    echo pg_last_error($connect);
-    exit;
-}
+                    $services = pg_query($connect,"SELECT * FROM o_services ORDER BY position_id ASC");
+                    if (!$services)
+                    {
+                    echo pg_last_error($connect);
+                      exit;
+                    }
 
-while ($row = pg_fetch_array($services))
-{
-    echo '<div class="col-md-4">
-                            <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                                <i class="glyphicon glyphicon-tree-conifer"></i>
-                            </span>
-                            <h4 class="service-heading">' . $row['title'] . '</h4>
-                            <p class="text-muted">' . $row['description'] . '</p>
+                    while($row = pg_fetch_array($services))
+                    {
+                        echo '<div class="col-md-4 col-sm-6 portfolio-item">
+                            <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content">
+                                        <i class="fa fa-plus fa-3x"></i>
+                                    </div>
+                                </div>
+                                <img src="'. $row['photo_url'] .'" class="img-size" alt="">
+                            </a>
+                            <div class="portfolio-caption">
+                                <h4>'. $row['title'] .'</h4>
+                                <p class="text-muted">'. $row['description'] .'</p>
+                            </div>
                         </div>';
-}
-?>
+                    }
+                ?>
             </div>
         </div>
     </section>
-
+    
+    
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
@@ -158,7 +165,7 @@ while ($row = pg_fetch_array($gallery))
                                         <i class="fa fa-plus fa-3x"></i>
                                     </div>
                                 </div>
-                                <img src="' . $row['photo_url'] . '" class="img-responsive" alt="">
+                                <img src="' . $row['photo_url'] . '" class="img-size" alt="">
                             </a>
                             <div class="portfolio-caption">
                                 <h4>' . $row['title'] . '</h4>
@@ -170,6 +177,8 @@ while ($row = pg_fetch_array($gallery))
             </div>
         </div>
     </section>
+    
+    
 
     <!-- About Section -->
     <section id="about">
@@ -246,6 +255,9 @@ while ($row = pg_fetch_array($about))
             </div>
         </div>
     </section>
+    
+    
+    
 
     <!-- Team Section -->
     <section id="team" class="bg-light-gray">
@@ -286,8 +298,10 @@ while ($person = pg_fetch_array($team))
     echo '
                         <div class="col-sm-4">
                             <div class="team-member">
+                                <img  class="img-responsive img-circle" alt="" src="'. $person['avatar'] .'">
                                 <!-- <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt=""> -->
                                 <h4>' . $person['name'] . '</h4>
+                                <p class="text-muted">' . $person['description'] . '</p>
                                 <p class="text-muted">Contacts</p>';
 
     while ($row = pg_fetch_array($contacts))
@@ -315,9 +329,9 @@ while ($person = pg_fetch_array($team))
             </div>
         </div>
     </section>
-
-    <!-- Clients Aside -->
-   
+    
+        
+      
 
     <section id="contact">
         <div class="container">
@@ -362,44 +376,6 @@ while ($person = pg_fetch_array($team))
             </div>
         </div>
     </section>
-
-    <footer>
-    <section id="team" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright © Your Website 2014</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer></body>
+    
+</body>
 </html>
