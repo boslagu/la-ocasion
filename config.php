@@ -48,6 +48,30 @@
     echo $e->getMessage();
   }
 
+
+  try{
+    if(@isset($_POST['btnInsertPhoto'])){
+      $sql = "INSERT INTO o_services(photo_id, position_id, title, description, photo_url) VALUES(
+          ". $_POST['txtPhotoID']. ",
+          ". $_POST['txtPositionID']. ",
+          '". $_POST['txtTitle']. "',
+          '". $_POST['txtDescription']. "',
+          '". $_POST['txtPhotoUrl']. "'
+      )";
+
+      $result = pg_query($connect, $sql);
+      if (!$result)
+      {
+          echo pg_last_error($connect);
+          exit;
+      }else{
+        echo "Record inserted!";
+      }
+    }
+  }catch (Exception $e){
+    echo $e->getMessage();
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +87,14 @@
         <input type="text" name="txtDescription" placeholder="Service Description">
         <input type="text" name="txtPhotoUrl" placeholder="Service Photo URL">
         <input type="submit" name="btnInsertService" value="Save">
+    </form><br>
+    <form action="#" method="POST" name="insertPhoto">
+        <input type="text" name="txtPhotoID" placeholder="Photo ID">
+        <input type="text" name="txtPositionID" placeholder="Photo Position ID">
+        <input type="text" name="txtTitle" placeholder="Photo Title">
+        <input type="text" name="txtDescription" placeholder="Photo Description">
+        <input type="text" name="txtPhotoUrl" placeholder="Photo Photo URL">
+        <input type="submit" name="btnInsertPhoto" value="Save">
     </form>
 </body>
 </html> 
