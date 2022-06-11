@@ -25,15 +25,6 @@
 
   }
 
-  if(isset(@$_POST['insertService'])){
-    $sql = "INSERT INTO o_services(service_id, position_id, title, description, photo_url) VALUES(
-        ". $_POST['txtServiceID']. ",
-        ". $_POST['txtPositionID']. ",
-        '". $_POST['txtTitle']. "',
-        '". $_POST['txtDescription']. "',
-        '". $_POST['txtPhotoUrl']. "'
-    )";
-  }
 ?>
 
 <!DOCTYPE html>
