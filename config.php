@@ -80,8 +80,12 @@
             echo "<table>";
             while ($row = pg_fetch_array($result))
             {
-              $lastID = $row['service_id'] + 1;
-              echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Delete</a></td></tr>";
+                $lastID = $row['service_id'] + 1;
+                if ($row['deleted'] == 1){
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Undo Delete</a></td></tr>";
+                }else{
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Delete</a></td></tr>";
+                }
             }
             echo "</table>";
         echo '<br>
@@ -110,7 +114,11 @@
             while ($row = pg_fetch_array($result))
             {
               $lastID = $row['photo_id'] + 1;
-              echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."'>Delete</a></td></tr>";
+              if($row['deleted'] == 1){
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."'>Undo Delete</a></td></tr>";
+              }else{
+                  echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."'>Delete</a></td></tr>";
+              }
             }
             echo "</table>";
         echo '<br>
