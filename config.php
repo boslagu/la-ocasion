@@ -70,7 +70,7 @@
     <br>
       <?php
         echo '<form action="#" method="POST" name="displayServices">';
-            $result = pg_query($connect, "SELECT * FROM o_services ORDER BY position_id ASC");
+            $result = pg_query($connect, "SELECT * FROM o_services ORDER BY service_id ASC");
             if (!$result)
             {
               echo pg_last_error($connect);
@@ -103,7 +103,7 @@
     <?php
         echo '<br>
         <form action="#" method="POST" name="displayServices">';
-            $result = pg_query($connect, "SELECT * FROM p_gallery ORDER BY position_id ASC");
+            $result = pg_query($connect, "SELECT * FROM p_gallery ORDER BY photo_id ASC");
             if (!$result)
             {
               echo pg_last_error($connect);
