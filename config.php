@@ -144,7 +144,7 @@
               $result = pg_query($connect, "SELECT * FROM design_config_param");
 
           echo '<script>
-              function createCookie(name, days) {
+              function createCookie(name, from, days) {
                 var expires;
                 if (days) {
                   var date = new Date();
@@ -155,7 +155,7 @@
                   expires = "";
                 }
                 var value = document.getElementById(name).value;
-                value = value + ":" + name;
+                value = value + ":" + name + ":" + from;
                 document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
               }</script>';
             if (!$result)
@@ -165,7 +165,7 @@
             }
             if(@isset($_POST['btnSave'])){
               $field = explode(":",$_COOKIE["main_bg"]);
-              $sql = "UPDATE design_config_param SET param_value = '". $field[1] ."' WHERE ";
+              $sql = "UPDATE design_config_param SET param_value = '". $field[0] ."' WHERE ". $field[1] ." = '" . $field[2] . "'";
               echo $sql;
             }
             echo "<table>";
@@ -174,7 +174,7 @@
               echo "<tr>
                 <td>". $row['param_name'] ."</td>
                 <td><input type='text' id='". $row['param_name'] ."' value='". $row['value'] ."'></td>
-                <td><input type='submit' name='btnSave' value='Save' onclick='createCookie(\"". $row['param_name'] ."\", 1)'></td>
+                <td><input type='submit' name='btnSave' value='Save' onclick='createCookie(\"". $row['param_name'] ."\", \"".$row['value']."\",1)'></td>
               </tr>";
             }
             
