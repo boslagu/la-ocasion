@@ -75,7 +75,7 @@
 
   try{
     if(@isset($_POST['btnDeleteService'])){
-      $sql = "DELETE FROM o_services WHERE service_id = ". $_POST['txtServiceID'] ."";
+      $sql = "DELETE FROM o_services WHERE service_id = ". $_POST['txtServiceIDDel'] ."";
 
       $result = pg_query($connect, $sql);
       if (!$result)
@@ -109,7 +109,7 @@
             echo "<table>";
             while ($row = pg_fetch_array($result))
             {
-              echo "<tr><td><input type='text' name='txtServiceID' value='". $row['service_id'] ."'></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><input type='submit' name='btnDeleteService' value='Delete'></td></tr>";
+              echo "<tr><td><input type='text' name='txtServiceIDDel' value='". $row['service_id'] ."'></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><input type='submit' name='btnDeleteService' value='Delete'></td></tr>"
             }
             echo "</table>";
         ?>
