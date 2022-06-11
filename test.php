@@ -96,7 +96,7 @@
     </header>
     
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -104,7 +104,7 @@
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
-            <div class="row text-center">
+            <div class="row">
                 <?php
                     $services = pg_query($connect,"SELECT * FROM o_services ORDER BY position_id ASC");
                     if (!$services)
