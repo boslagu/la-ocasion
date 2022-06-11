@@ -168,7 +168,7 @@
               echo "<tr>
                 <td>". $row['param_name'] ."</td>
                 <td><input type='text' id='". $row['param_name'] ."' value='". $row['value'] ."'></td>
-                <td><input type='submit' name='btnSave' value='Save' onclick='createCookie('". $row['param_name'] ."', 1)'></td>
+                <td><input type='submit' name='btnSave' value='Save' onclick='createCookie(". $row['param_name'] .", 1)'></td>
               </tr>";
             }
             //$_COOKIE["height"];
