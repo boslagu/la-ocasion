@@ -291,6 +291,7 @@ while ($person = pg_fetch_array($team))
                                 <img  class="img-responsive img-circle" alt="" src="'. $person['avatar'] .'">
                                 <!-- <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt=""> -->
                                 <h4>' . $person['name'] . '</h4>
+                                <p class="text-muted">' . $person['description'] . '</p>
                                 <p class="text-muted">Contacts</p>';
 
     while ($row = pg_fetch_array($contacts))
