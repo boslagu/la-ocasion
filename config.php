@@ -34,6 +34,15 @@
           '". $_POST['txtDescription']. "',
           '". $_POST['txtPhotoUrl']. "'
       )";
+
+      $result = pg_query($connect, $sql);
+      if (!$result)
+      {
+          echo pg_last_error($connect);
+          exit;
+      }else{
+        echo "Record inserted!";
+      }
     }
   }catch (Exception $e){
     echo $e->getMessage();
