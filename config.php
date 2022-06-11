@@ -138,6 +138,10 @@
   
         
     <?php
+  
+          if(@isset($_POST['main_bg'])){
+            echo 'alert("cookie: " + '. $_COOKIE["main_bg"] .');';
+          }
           echo '<br>
           <form action="#" method="POST" name="param">';
               $result = pg_query($connect, "SELECT * FROM design_config_param");
@@ -172,7 +176,7 @@
                 <td><input type='submit' name='btnSave' value='Save' onclick='createCookie(\"". $row['param_name'] ."\", 1)'></td>
               </tr>";
             }
-            //$_COOKIE["height"];
+            
             echo "</table>";
       
     ?>
