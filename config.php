@@ -154,9 +154,8 @@
                 else {
                   expires = "";
                 }
-                alert("name: " + name);
                 var value = document.getElementById(name).value;
-                alert("value: " + value);
+                value = value + ":" + name;
                 document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
               }</script>';
             if (!$result)
@@ -165,7 +164,8 @@
               exit;
             }
             if(@isset($_POST['btnSave'])){
-              echo 'alert("cookie: " + '. $_COOKIE["main_bg"] .');';
+              $result = pg_query($connect, "UPDATE design_config_param SET param_value = '". preg_split(":",$_COOKIE["main_bg"]) ."' WHERE ");
+              echo 'alert("cookie: " + '. $result .');';
             }
             echo "<table>";
             while ($row = pg_fetch_array($result))
