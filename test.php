@@ -91,10 +91,6 @@
                     while($row = pg_fetch_array($services))
                     {
                         echo '<div class="col-md-4">
-                            <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                                <i class="glyphicon glyphicon-tree-conifer"></i>
-                            </span>
                             <h4 class="service-heading">'. $row['title'] .'</h4>
                             <p class="text-muted">'. $row['description'] .'</p>
                         </div>';
