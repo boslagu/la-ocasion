@@ -82,8 +82,8 @@
               echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Delete</a></td></tr>";
             }
             echo "</table>";
-        echo '<br>
         $lastID = $row['service_id'] + 1;
+        echo '<br>
         </form>
         <form action="#" method="POST" name="insertService">
             <input type="text" name="txtServiceID" value="'. $lastID .'" disabled>
