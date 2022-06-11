@@ -143,10 +143,7 @@
               $result = pg_query($connect, "SELECT * FROM design_config_param");
 
             if (@isset($_POST['btnSave'])){
-                    echo '<script>$(document).ready(function () {
-                          createCookie("height", $(window).height(), "10");
-                        });
-
+                    echo '<script>
                         function createCookie(name, days) {
                           var expires;
                           if (days) {
