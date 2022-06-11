@@ -18,6 +18,10 @@
       echo pg_last_error($connect);
       exit;
   }
-  echo $_GET['met'] == 'del';
+if($_GET['met'] == 'del'){
+  echo 1;
+}else{
+  echo 0;
+}
 
 ?>
