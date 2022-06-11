@@ -167,6 +167,12 @@
               $field = explode(";",$_COOKIE["main_bg"]);
               $sql = "UPDATE design_config_param SET param_value = '". $field[0] ."' WHERE ". $field[1] ." = '" . $field[2] . "'";
               $result = pg_query($connect, $sql);
+              if (!$result)
+              {
+                echo pg_last_error($connect);
+              }else{
+                echo "<script>alert(Updated BG!)</script>";
+              }
               echo $sql;
             }
             echo "<table>";
