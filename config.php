@@ -11,19 +11,6 @@
       echo "Error : Unable to open database\n";
   }
 
-  $result = pg_query($connect, "SELECT * FROM users");
-  if (!$result)
-  {
-      echo pg_last_error($connect);
-      exit;
-  }
-
-  while ($row = pg_fetch_array($result))
-  {
-
-      echo print_r($row);
-
-  }
 
   try{
     if(@isset($_POST['btnInsertService'])){
@@ -80,8 +67,9 @@
     <title></title>
 </head>
 <body>
-    <form action="#" method="POST" name="displayServices">
-        <?php
+    <br>
+      <?php
+        echo '<form action="#" method="POST" name="displayServices">';
             $result = pg_query($connect, "SELECT * FROM o_services ORDER BY position_id ASC");
             if (!$result)
             {
@@ -91,27 +79,48 @@
             echo "<table>";
             while ($row = pg_fetch_array($result))
             {
-              echo "<tr><td>Order ID: ". $row['position_id'] ."></td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Delete</a></td></tr>";
+              echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Service: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='delete.php?id=". $row['service_id'] ."'>Delete</a></td></tr>";
             }
             echo "</table>";
-        ?>
-    </form>
-    <form action="#" method="POST" name="insertService">
-        <input type="text" name="txtServiceID" placeholder="Service ID">
-        <input type="text" name="txtPositionID" placeholder="Service Position ID">
-        <input type="text" name="txtTitle" placeholder="Service Title">
-        <input type="text" name="txtDescription" placeholder="Service Description">
-        <input type="text" name="txtPhotoUrl" placeholder="Service Photo URL">
-        <input type="submit" name="btnInsertService" value="Save">
-    </form><br>
+        echo '<br>
+        $lastID = $row['service_id'] + 1;
+        </form>
+        <form action="#" method="POST" name="insertService">
+            <input type="text" name="txtServiceID" value="'. $lastID .'" disabled>
+            <input type="text" name="txtPositionID" placeholder="Service Position ID">
+            <input type="text" name="txtTitle" placeholder="Service Title">
+            <input type="text" name="txtDescription" placeholder="Service Description">
+            <input type="text" name="txtPhotoUrl" placeholder="Service Photo URL">
+            <input type="submit" name="btnInsertService" value="Save">
+        </form><br>';
+    ?>
         
-    <form action="#" method="POST" name="insertPhoto">
-        <input type="text" name="txtPhotoID" placeholder="Photo ID">
-        <input type="text" name="txtPositionID" placeholder="Photo Position ID">
-        <input type="text" name="txtTitle" placeholder="Photo Title">
-        <input type="text" name="txtDescription" placeholder="Photo Description">
-        <input type="text" name="txtPhotoUrl" placeholder="Photo Photo URL">
-        <input type="submit" name="btnInsertPhoto" value="Save">
-    </form>
+    <?php
+        echo '<br>
+        <form action="#" method="POST" name="displayServices">';
+            $result = pg_query($connect, "SELECT * FROM p_gallery ORDER BY position_id ASC");
+            if (!$result)
+            {
+              echo pg_last_error($connect);
+              exit;
+            }
+            echo "<table>";
+            while ($row = pg_fetch_array($result))
+            {
+              echo "<tr><td>Order ID: ". $row['position_id'] ."</td><td>Photo: ". $row['title'] ."</td><td>Description: ". $row['description'] ."</td><td><a href='deletePhoto.php?id=". $row['photo_id'] ."'>Delete</a></td></tr>";
+            }
+            echo "</table>";
+        $lastID = $row['photo_id'] + 1;
+        echo '<br>
+        <form action="#" method="POST" name="insertPhoto">
+            <input type="text" name="txtPhotoID" value="'. $lastID .'" disabled>
+            <input type="text" name="txtPositionID" placeholder="Photo Position ID">
+            <input type="text" name="txtTitle" placeholder="Photo Title">
+            <input type="text" name="txtDescription" placeholder="Photo Description">
+            <input type="text" name="txtPhotoUrl" placeholder="Photo Photo URL">
+            <input type="submit" name="btnInsertPhoto" value="Save">
+        </form>';
+      
+    ?>
 </body>
 </html> 
