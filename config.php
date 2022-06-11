@@ -142,23 +142,21 @@
           <form action="#" method="POST" name="param">';
               $result = pg_query($connect, "SELECT * FROM design_config_param");
 
-            if (@isset($_POST['btnSave'])){
-                    echo '<script>
-                        function createCookie(name, days) {
-                          var expires;
-                          if (days) {
-                            var date = new Date();
-                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                            expires = "; expires=" + date.toGMTString();
-                          }
-                          else {
-                            expires = "";
-                          }
-                          console.log("name: " + name);
-                          var value = document.getElementById(name).value;
-                          document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
-                        }</script>';
-            }
+          echo '<script>
+              function createCookie(name, days) {
+                var expires;
+                if (days) {
+                  var date = new Date();
+                  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                  expires = "; expires=" + date.toGMTString();
+                }
+                else {
+                  expires = "";
+                }
+                console.log("name: " + name);
+                var value = document.getElementById(name).value;
+                document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+              }</script>';
             if (!$result)
             {
               echo pg_last_error($connect);
