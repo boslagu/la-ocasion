@@ -51,7 +51,7 @@
 
   try{
     if(@isset($_POST['btnInsertPhoto'])){
-      $sql = "INSERT INTO o_services(photo_id, position_id, title, description, photo_url) VALUES(
+      $sql = "INSERT INTO p_gallery(photo_id, position_id, title, description, photo_url) VALUES(
           ". $_POST['txtPhotoID']. ",
           ". $_POST['txtPositionID']. ",
           '". $_POST['txtTitle']. "',
