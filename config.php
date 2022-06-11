@@ -26,7 +26,7 @@
   }
 
   try{
-    if(@isset($_POST['insertService'])){
+    if(@isset($_POST['btnInsertService'])){
       $sql = "INSERT INTO o_services(service_id, position_id, title, description, photo_url) VALUES(
           ". $_POST['txtServiceID']. ",
           ". $_POST['txtPositionID']. ",
@@ -62,6 +62,7 @@
         <input type="text" name="txtTitle" placeholder="Service Title">
         <input type="text" name="txtDescription" placeholder="Service Description">
         <input type="text" name="txtPhotoUrl" placeholder="Service Photo URL">
+        <input type="submit" name="btnInsertService" value="Save">
     </form>
 </body>
 </html> 
