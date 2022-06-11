@@ -247,6 +247,78 @@ while ($row = pg_fetch_array($about))
     </section>
     
     
+    
+
+    <!-- Team Section -->
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">La Ocasion oweners and partners.</h3>
+                </div>
+            </div>
+            <div class="row">
+                
+                <?php
+$team = pg_query($connect, "SELECT * FROM team ORDER BY position_id ASC");
+if (!$team)
+{
+    echo pg_last_error($connect);
+    exit;
+}
+
+while ($person = pg_fetch_array($team))
+{
+
+    $media = pg_query($connect, "SELECT * FROM media ORDER BY media_id ASC");
+    if (!$media)
+    {
+        echo pg_last_error($connect);
+        exit;
+    }
+
+    $contacts = pg_query($connect, "SELECT * FROM contact ORDER BY contact_id ASC");
+    if (!$contacts)
+    {
+        echo pg_last_error($connect);
+        exit;
+    }
+
+    echo '
+                        <div class="col-sm-4">
+                            <div class="team-member">
+                                <!-- <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt=""> -->
+                                <h4>' . $person['name'] . '</h4>
+                                <p class="text-muted">Contacts</p>';
+
+    while ($row = pg_fetch_array($contacts))
+    {
+        echo '<p class="text-muted">' . $row['contact'] . '</p>';
+    }
+    echo '<p class="text-muted">Social Media</p><ul class="list-inline social-buttons">
+                                ';
+    while ($row = pg_fetch_array($media))
+    {
+        echo '<li><a href="' . $row['url'] . '"><i class="fa fa-' . $row['platform'] . '"></i></a>
+                                    </li>';
+    }
+    echo '
+                                </ul>
+                            </div>
+                        </div>';
+}
+?>
+                
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
 
     <!-- Team Section -->
 <section id="team" class="bg-light-gray">
