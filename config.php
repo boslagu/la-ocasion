@@ -164,8 +164,9 @@
               exit;
             }
             if(@isset($_POST['btnSave'])){
-              $sql = "UPDATE design_config_param SET param_value = '". preg_split(":",$_COOKIE["main_bg"]) ."' WHERE ";
-              echo 'alert("cookie: " + '. $sql .');';
+              $field = preg_split(":",$_COOKIE["main_bg"]);
+              $sql = "UPDATE design_config_param SET param_value = '". $field[1] ."' WHERE ";
+              echo $sql;
             }
             echo "<table>";
             while ($row = pg_fetch_array($result))
