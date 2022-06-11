@@ -309,7 +309,7 @@
                         echo '
                         <div class="col-sm-4">
                             <div class="team-member">
-                                <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt="">
+                                <!-- <img src="http://www.mycatspace.com/wp-content/uploads/2013/08/adopting-a-cat.jpg" class="img-responsive img-circle" alt=""> -->
                                 <h4>'. $person['name'] .'</h4>
                                 <p class="text-muted">Contacts</p>';
                                 
