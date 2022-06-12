@@ -129,7 +129,7 @@
             echo "</table>";
         echo '<br>
         <form action="#" method="POST" name="insertPhoto">
-            <input type="text" name="txtPhotoID" value="'. $lastID .'" disabled>
+            <input type="text" name="txtPhotoID" value="'. $lastID .'">
             <input type="text" name="txtPositionID" placeholder="Photo Position ID">
             <input type="text" name="txtTitle" placeholder="Photo Title">
             <input type="text" name="txtDescription" placeholder="Photo Description">
