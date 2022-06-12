@@ -55,6 +55,7 @@
           echo $sql;
           exit;
       }else{
+        echo $sql;
         echo "Record inserted!";
       }
     }
