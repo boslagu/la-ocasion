@@ -52,6 +52,7 @@
       if (!$result)
       {
           echo pg_last_error($connect);
+          echo $sql;
           exit;
       }else{
         echo "Record inserted!";
