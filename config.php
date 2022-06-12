@@ -14,12 +14,13 @@
 
   try{
     if(@isset($_POST['btnInsertService'])){
-      $sql = "INSERT INTO o_services(service_id, position_id, title, description, photo_url) VALUES(
+      $sql = "INSERT INTO o_services(service_id, position_id, title, description, photo_url, deleted) VALUES(
           ". $_POST['txtServiceID']. ",
           ". $_POST['txtPositionID']. ",
           '". $_POST['txtTitle']. "',
           '". $_POST['txtDescription']. "',
-          '". $_POST['txtPhotoUrl']. "'
+          '". $_POST['txtPhotoUrl']. "',
+          0
       )";
 
       $result = pg_query($connect, $sql);
@@ -38,12 +39,13 @@
 
   try{
     if(@isset($_POST['btnInsertPhoto'])){
-      $sql = "INSERT INTO p_gallery(photo_id, position_id, title, description, photo_url) VALUES(
+      $sql = "INSERT INTO p_gallery(photo_id, position_id, title, description, photo_url, deleted) VALUES(
           ". $_POST['txtPhotoID']. ",
           ". $_POST['txtPositionID']. ",
           '". $_POST['txtTitle']. "',
           '". $_POST['txtDescription']. "',
-          '". $_POST['txtPhotoUrl']. "'
+          '". $_POST['txtPhotoUrl']. "',
+          0
       )";
 
       $result = pg_query($connect, $sql);
