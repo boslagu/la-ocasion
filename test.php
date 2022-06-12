@@ -33,7 +33,7 @@
             text-align: center;
             color: #fff;
             background-attachment: scroll;
-            background-image: url('.$bg.');
+            background-image: url("'.$bg.'");
             background-position: center center;
             background-repeat: none;
             -webkit-background-size: cover;
